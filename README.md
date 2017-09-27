@@ -15,6 +15,9 @@ It can easily be adapted for other development settings.
 Setting up X11 on Windows 10
 Follow https://x.cygwin.com/docs/ug/setup.html  
 
+CURRENT SHOWSTOPPER & TODO:
+I cannot install Cygwin on my Win10 box, need to figure this out with Microsoft.
+
 # step 2
 Testing the docker setup. In this example, it is done on the Google cloud.
 We log into a RHEL server with external ssh on port 22 enabled.
