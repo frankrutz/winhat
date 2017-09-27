@@ -1,14 +1,17 @@
 # winhat
 RHEL development farm on openShift
 
+Example setup for C++/git/eclipse/mssql/X11
+
 winhat is a container setup for running a red hat enterprise linux (RHEL) development desktop farm on openShift.
 The desktop is accessed using X11, in our example from a Windows 10 client.
+The setup includes running a local copy of Microsoft MSSQL DB in a linux container.
 
 Prerequisites for users:
 Basic knowledge of docker
 Basic linux command line skills
 
-Example setup for C++/git/eclipse/mssql.
+
 It can easily be adapted for other development settings.
 
 # step 1  
