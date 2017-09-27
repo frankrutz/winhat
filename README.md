@@ -11,6 +11,10 @@ Prerequisites for users:
 Basic knowledge of docker
 Basic linux command line skills
 
+Node requirement:
+16 Gig of RAM ( estimated, exact number will follow ).
+
+
 
 It can easily be adapted for other development settings.
 
