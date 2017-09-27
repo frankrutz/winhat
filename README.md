@@ -14,6 +14,7 @@ Basic linux command line skills
 Node requirement:
 16 Gig of RAM ( estimated, exact number will follow ).
 
+Started during Microsoft Ignite 2017, in cooperatio nof some people from Docker, Microsoft, SwissLife, Redhat.
 
 
 It can easily be adapted for other development settings.
