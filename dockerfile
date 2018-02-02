@@ -6,57 +6,20 @@
 FROM centos:7
 MAINTAINER Frank Potthast Rutz
 
-USER root
-ENV DISPLAY="" \
-    HOME=/home/1001
+RUN yum -y update; yum clean all
+RUN yum -y install x11vnc firefox xorg-x11-server-Xvfb xorg-x11-twm tigervnc-server xterm xorg-x11-font dejavu-sans-fonts dejavu-serif-fonts xdotool xeyes ; yum clean all
 
-ARG vncpassword=password
+# Add the xstartup file into the image
+ADD ./xstartup /
 
-RUN yum clean all && \
-    yum update -y && \
-    yum install -y --setopt=tsflags=nodocs \
-                   tigervnc-server \
-    		   xorg-x11-server-utils \
-                   xorg-x11-server-Xvfb \
-                   xorg-x11-fonts-* \
-                   xterm && \
-                   yum clean all && \
-                   rm -rf /var/cache/yum
+RUN mkdir /.vnc
+RUN x11vnc -storepasswd 123456 /.vnc/passwd
+RUN  \cp -f ./xstartup /.vnc/.
+RUN chmod -v +x /.vnc/xstartup
+RUN sed -i '/\/etc\/X11\/xinit\/xinitrc-common/a [ -x /usr/bin/xeyes ] && /usr/bin/xeyes &' /etc/X11/xinit/xinitrc
 
-RUN yum install -y --setopt=tsflags=nodocs \
-                  openmotif \
-                  xterm \
-                  firefox \
-                  yum clean all && \
-                  rm -rf /var/cache/yum/*
+RUN yum -y install mate-terminal mate-screensaver mate-applets mate-backgrounds \
+           mate-desktop mate-dictionary mate-menus-prefrences-category-menu \ 
+           mate-notification-daemon mate-screenshot mate-system-log \ 
+           mate-system-monitor mate-user-guide mate-utils
 
-RUN /bin/dbus-uuidgen --ensure
-RUN useradd -u 1001 -r -g 0 -d ${HOME} -s /bin/bash -c "Kiosk User" kioskuser
-
-ADD xstartup ${HOME}/.vnc/
-RUN echo "${vncpassword}" | vncpasswd -f > ${HOME}/.vnc/passwd
-# RUN /bin/echo "/usr/bin/firefox" >> /home/1001/.vnc/xstartup
-RUN touch /home/1001/.Xauthority
-
-RUN chown -R 1001:0 ${HOME} && \
-    chmod 775 ${HOME}/.vnc/xstartup && \
-    chmod 600 ${HOME}/.vnc/passwd
-
-##########Firefox install mate should go here#####################################
-RUN yum install -y --setopt=tsflags=nodocs \
-                  firefox \
-                  yum clean all && \
-                  rm -rf /var/cache/yum/*
-
-# Run firefox from xterm, since it appears to be finnicky about grabbing the X display.
-RUN /bin/echo 'xterm -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" firefox & ' >> /home/1001/.vnc/xstartup 
-
-
-EXPOSE 5901
-WORKDIR ${HOME}
-USER 1001
-
-# Always run the WM last!
-RUN /bin/echo 'mwm' >> /home/1001/.vnc/xstartup 
-
-ENTRYPOINT ["/usr/bin/vncserver","-fg"]
