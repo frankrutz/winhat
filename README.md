@@ -35,7 +35,12 @@ Setup on Windows 10 Pro
 Install the Windows subsystem for Linux:
 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
+
 # step 2
+Set up minikube on Windows 10
+https://blogs.msdn.microsoft.com/wasimbloch/2017/01/23/setting-up-kubernetes-on-windows10-laptop-with-minikube/
+
+# step 3
 Install a vnc viewer:
 Follow https://x.cygwin.com/docs/ug/setup.html  
 
