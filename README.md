@@ -44,7 +44,4 @@ https://blogs.msdn.microsoft.com/wasimbloch/2017/01/23/setting-up-kubernetes-on-
 Install a vnc viewer:
 Follow https://x.cygwin.com/docs/ug/setup.html  
 
-# step 3
-Testing the docker setup. In this example, it is done on the Google cloud.
-We log into a RHEL server with external ssh on port 22 enabled.
 
