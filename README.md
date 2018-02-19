@@ -1,10 +1,10 @@
 # winhat
-A cloud native RHEL devtop farm
+A cloud native RHEL devtop solution
 
 Example setup for C++/git/eclipse/mssql/VNC
 
-winhat is a container setup for running a red hat enterprise linux (RHEL) development desktop farm.
-The desktop is accessed using VNC, in our example from a Windows 10 client.
+winhat is a container setup for running a red hat enterprise linux (RHEL) development desktop.
+The desktop is accessed using VNC.
 The setup includes running a local copy of Microsoft MSSQL DB in a linux container.
 
 Motivation:
