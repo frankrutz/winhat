@@ -1,10 +1,10 @@
 # winhat
-A cloud native RHEL development farm on openShift
+A cloud native RHEL devtop farm
 
-Example setup for C++/git/eclipse/mssql/X11
+Example setup for C++/git/eclipse/mssql/VNC
 
-winhat is a container setup for running a red hat enterprise linux (RHEL) development desktop farm on openShift.
-The desktop is accessed using X11, in our example from a Windows 10 client.
+winhat is a container setup for running a red hat enterprise linux (RHEL) development desktop farm.
+The desktop is accessed using VNC, in our example from a Windows 10 client.
 The setup includes running a local copy of Microsoft MSSQL DB in a linux container.
 
 Motivation:
@@ -26,19 +26,20 @@ Node requirement:
 
 
 History
-Started during Microsoft Ignite 2017, in cooperatio nof some people from Docker, Microsoft, SwissLife, Redhat.
-
+Started during Microsoft Ignite 2017, in cooperatio nof some people from Docker, Microsoft, SwissLife, Redhat
 
 It can easily be adapted for other development settings.
 
-# step 1  
-Setting up X11 on Windows 10
-Follow https://x.cygwin.com/docs/ug/setup.html  
+Setup on Windows 10 Pro
+# step 1 
+Install the Windows subsystem for Linux:
+https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 # step 2
+Install a vnc viewer:
+Follow https://x.cygwin.com/docs/ug/setup.html  
+
+# step 3
 Testing the docker setup. In this example, it is done on the Google cloud.
 We log into a RHEL server with external ssh on port 22 enabled.
-
-
-
 
